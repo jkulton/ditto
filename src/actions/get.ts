@@ -1,12 +1,9 @@
 import constants from '../constants';
 const { STATUS } = constants;
-import { KVKey, Store, RequestContext } from '../types';
+import { KVKey, Store, RequestContext, Result } from '../types';
 
-async function handler(context: RequestContext): Promise<object> {
+async function handler(context: RequestContext): Promise<Result> {
   const { path, url, store } = context;
-
-  console.log('PATH', path);
-  console.log('url', url);
   let data;
 
   if (path === '') {

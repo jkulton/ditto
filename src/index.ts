@@ -1,5 +1,4 @@
 import { parseURLPath, handleError } from './utility';
-import { ActionList } from './types';
 import constants from './constants';
 import actions from './actions';
 

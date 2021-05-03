@@ -5,8 +5,8 @@ export interface KVKey {
 }
 
 export interface Action {
-  validator?: Function;
-  handler: Function;
+  validator?(RequestContext);
+  handler(RequestContext);
 }
 
 export interface ActionList {

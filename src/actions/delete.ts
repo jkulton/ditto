@@ -1,8 +1,8 @@
 import constants from '../constants';
 const { STATUS } = constants;
-import { RequestContext, Store } from '../types';
+import { RequestContext, Store, Result } from '../types';
 
-export async function handler(context: RequestContext): Promise<object> {
+export async function handler(context: RequestContext): Promise<Result> {
   const { path, store } = context;
   if (path === '') {
     await deleteAllRoutes(store);

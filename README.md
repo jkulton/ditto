@@ -25,7 +25,14 @@ Ensure you have an installation of [`wrangler`](https://github.com/cloudflare/wr
 3. Run `wrangler kv:namespace create "REPEAT_KV"` and add output to `wrangler.toml`
 4. Run `wrangler dev` to test locally
 
-## Enabling Authentication
+### Testing
+
+```
+npm run test
+```
+
+## Authentication
+
 
 
 
