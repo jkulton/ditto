@@ -12,17 +12,17 @@ Generate a new Worker using this template:
 wrangler generate repeat https://github.com/jkulton/test && cd repeat
 ```
 
-Next, update `account_id` in `wrangler.toml` to your account id. (This can be found on your [Workers Dashboard](https://dash.cloudflare.com/?to=/:account/workers))
+Next, set your `account_id` in `wrangler.toml`. (Found on [Workers Dashboard](https://dash.cloudflare.com/?to=/:account/workers))
 
-Create a KV namespace for repeat:
+Create a KV namespace for Repeat:
 
 ```sh
 wrangler kv:namespace create "REPEAT_KV"
 ```
 
-This command will output a message instructing you to append some content to the end of `wrangler.toml`, do so now.
+This command will instruct you to append some content to `wrangler.toml`, do so now.
 
-Now just publish your Worker and you're good to go:
+Publish your Worker and start using your mock API:
 
 ```
 wrangler publish
