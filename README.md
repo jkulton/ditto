@@ -4,28 +4,33 @@ A simple mock API for testing, prototyping, and general fun.
 
 ## Setup
 
-Ensure you have an installation of [`wrangler`](https://github.com/cloudflare/wrangler) that is configured.
+Ensure you have [`wrangler`](https://github.com/cloudflare/wrangler) installed and configured.
 
 1. Generate a new Worker using this template
 
+```
+wrangler generate repeat https://github.com/jkulton/test
+```
+
+2. Navigate into new Worker\ directory
+
+```
+cd repeat
+```
+  
+3. Update account_id in `wrangler.toml`
+
+Your account id can be found on your [Workers Dashboard](https://dash.cloudflare.com/?to=/:account/workers))
+
+4. Create Worker KV namespace
+
 ```sh
-wrangler generate https://github.com/jkulton/repeat
-```
-
-2. Update `wrangler.toml`
-
-- Update `account_id` in `wrangler.toml` to your account id (found on your [Workers Dashboard](https://dash.cloudflare.com/?to=/:account/workers))
-- Update `zone_id` if appropriate
-
-3. Create Worker KV namespace
-
-```
 wrangler kv:namespace create "REPEAT_KV"
 ```
 
 This command will output a message instructing you to append some content to the end of `wrangler.toml`, be sure to do so.
 
-4. Deploy
+5. Deploy!
 
 ```
 wrangler publish
