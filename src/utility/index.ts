@@ -1,0 +1,24 @@
+import constants from '../constants';
+const { STATUS, RESPONSE_HEADERS } = constants;
+
+export function parseURLPath(url: string): string {
+  const requestUrl = new URL(url);
+  let { pathname } = requestUrl;
+
+  // Remove trailing '/' if it exists
+  if (pathname[pathname.length - 1] === '/') {
+    pathname = pathname.slice(0, pathname.length - 1);
+  }
+
+  return pathname;
+}
+
+export function handleError(error: Error): Response {
+  console.log('*** ERROR ***');
+  console.log(error);
+  const data = { error: error.message, code: 500 };
+  return new Response(JSON.stringify(data), {
+    headers: RESPONSE_HEADERS,
+    status: STATUS.INTERNAL_SERVER_ERROR,
+  });
+}
