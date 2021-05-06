@@ -15,6 +15,7 @@ export interface ActionList {
 
 export interface RequestContext {
   contentType: string;
+  method: string;
   path: string;
   body: string;
   store: Store;

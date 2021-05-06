@@ -1,4 +1,4 @@
-import { parseURLPath, handleError } from './utility';
+import { parseURLPath, handleError, getRequestContext } from './utility';
 import constants from './constants';
 import actions from './actions';
 
@@ -10,12 +10,8 @@ addEventListener('fetch', (event) => {
 });
 
 async function handleRequest(request: Request): Promise<Response> {
-  const path = parseURLPath(request.url);
-  const { method, url } = request;
-  const body = await request.text();
-  const action = actions[method];
-  const contentType = request.headers.get('Content-Type') || '';
-  const requestContext = { url, path, body, contentType, store: REPEAT_KV };
+  const requestContext = await getRequestContext(request);
+  const action = actions[requestContext.method];
 
   if (!action) {
     return new Response(null, {
