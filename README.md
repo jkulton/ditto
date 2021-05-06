@@ -5,7 +5,7 @@
 
 **[Website](https://ditto.pages.dev/)**
 
-Ditto is a live HTTP API deployed via a single CloudFlare Worker.
+A flexible mock API deployed via a single CloudFlare Worker.
 
 Think of Ditto as a combination of a REST API and a key-value store. Whatever you `PUT` to a route will be returned when you `GET` that same route.
 
