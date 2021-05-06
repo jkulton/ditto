@@ -16,7 +16,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "complexity": ["error", 5]
+        "complexity": ["error", 6]
     },
     "ignorePatterns": [
         "webpack.config.js",
