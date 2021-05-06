@@ -33,7 +33,17 @@ npm run test
 
 ## Authentication
 
+If you'd like to enable authentication simply [set a secret using wrangler](https://developers.cloudflare.com/workers/cli-wrangler/commands#secret) with the name `DITTO_PSK`.
 
+```
+wrangler secret put DITTO_PSK
+```
 
+All requests to Ditto will then require passing `X-Ditto-PSK` as a header with the value of your secret.
 
+To disable auth again just delete the `DITTO_PSK` secret
+
+```
+wrangler secret delete DITTO_PSK
+```
 
