@@ -10,7 +10,7 @@ addEventListener('fetch', (event) => {
 });
 
 async function handleRequest(request: Request): Promise<Response> {
-  const requestContext = await getRequestContext(request, REPEAT_KV);
+  const requestContext = await getRequestContext(request, DITTO_KV);
   const action = actions[requestContext.method];
 
   // If HTTP request method doesn't match a supported action return error

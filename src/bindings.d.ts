@@ -1,5 +1,5 @@
 export {};
 
 declare global {
-  const REPEAT_KV: KVNamespace
+  const DITTO_KV: KVNamespace
 }
