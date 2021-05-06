@@ -13,6 +13,7 @@ async function handleRequest(request: Request): Promise<Response> {
   const requestContext = await getRequestContext(request);
   const action = actions[requestContext.method];
 
+  // If HTTP request method doesn't match a supported action return error
   if (!action) {
     return new Response(null, {
       headers: RESPONSE_HEADERS,
@@ -20,10 +21,9 @@ async function handleRequest(request: Request): Promise<Response> {
     });
   }
 
-  const { validator, handler } = action;
-
-  if (validator) {
-    const result = await validator(requestContext);
+  // If HTTP action requires validation we check before continuing
+  if (action.validator) {
+    const result = await action.validator(requestContext);
 
     if (result.error) {
       return new Response(result.error, {
@@ -33,10 +33,9 @@ async function handleRequest(request: Request): Promise<Response> {
     }
   }
 
-  const result = await handler(requestContext);
+  // Get result of action
+  const result = await action.handler(requestContext);
 
-  return new Response(result.data, {
-    headers: RESPONSE_HEADERS,
-    status: result.status,
-  });
+  // Create response for client
+  return new Response(result.data, { headers: RESPONSE_HEADERS, status: result.status });
 }
