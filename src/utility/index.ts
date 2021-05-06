@@ -24,11 +24,11 @@ export function handleError(error: Error): Response {
   });
 }
 
-export async function getRequestContext(request: Request): Promise<RequestContext> {
+export async function getRequestContext(request: Request, store: KVNamespace): Promise<RequestContext> {
   const path = parseURLPath(request.url);
   const { method, url } = request;
   const body = await request.text();
   const contentType = request.headers.get('Content-Type') || '';
 
-  return { method, url, path, body, contentType, store: REPEAT_KV };
+  return { method, url, path, body, contentType, store };
 }
