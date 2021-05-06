@@ -12,7 +12,11 @@ wrangler generate ditto https://github.com/jkulton/ditto && cd ditto
 
 Set your account id in `wrangler.toml`, which can be found on your [Workers Dashboard](https://dash.cloudflare.com/?to=/:account/workers).
 
-Create a KV namespace for Ditto: `wrangler kv:namespace create "DITTO_KV"`
+Create a KV namespace for Ditto:
+
+```
+wrangler kv:namespace create "DITTO_KV"
+```
 
 The previous command will instruct you to append some content to `wrangler.toml`, be sure to do so.
 
@@ -31,14 +35,14 @@ Whatever you `PUT` to a path will be returned when you `GET` that path.
 
 `PUT` request to Ditto on a non-origin path with some JSON data will store the data
 
-```
+```http
 PUT https://ditto.USERNAME.workers.dev/users/1
 Content-Type: application/json
 
 {
-  “id”: 1,
-  “name”: “Some Name”,
-  “favorite_food”: “Peanut Butter & Jelly”
+  "id": 1,
+  "name": "Some Name",
+  "favorite_food": "Peanut Butter & Jelly"
 }
 ```
 
@@ -47,35 +51,35 @@ Content-Type: application/json
 
 `GET` requests to the same path will return the data stored
 
-```
+```http
 GET https://ditto.USERNAME.workers.dev/users/1
 
 {
-  “id”: 1,
-  “name”: “Some Name”,
-  “favorite_food”: “Peanut Butter & Jelly”
+  "id": 1,
+  "name": "Some Name",
+  "favorite_food": "Peanut Butter & Jelly"
 }
 ```
 
 
 `GET` requests a path you haven't `PUT` will return a 404
 
-```
+```http
 GET https://ditto.USERNAME.workers.dev/users/2
 
 404 Not Found
 ```
 
 
-`GET` requests to the origin URL return list of all defined routes
+`GET` requests to the origin URL return a JSON array of all defined routes
 
-```
+```http
 GET https://ditto.USERNAME.workers.dev/
 
 [
   {
-    “name”: “/users/1”,
-    “url”: “https://ditto.USERNAME.workers.dev/users/1”
+    "name": "/users/1",
+    "url": "https://ditto.USERNAME.workers.dev/users/1"
   }
 ]
 ```
@@ -84,14 +88,14 @@ GET https://ditto.USERNAME.workers.dev/
 
 `PUT` requests to an existing path update that resource
 
-```
+```http
 PUT https://ditto.USERNAME.workers.dev/users/1
 Content-Type: application/json
 
 {
-  “id”: 1,
-  “name”: "New Name",
-  “favorite_food”: "Oatmeal"
+  "id": 1,
+  "name": "New Name",
+  "favorite_food": "Oatmeal"
 }
 ```
 
@@ -99,13 +103,13 @@ Content-Type: application/json
 
 `DELETE` requests to an existing path will remove that resource
 
-```
+```http
 DELETE https://ditto.USERNAME.workers.dev/users/1
 ```
 
 `DELETE` requests to the origin URL will **remove all resources**
 
-```
+```http
 DELETE https://ditto.USERNAME.workers.dev/
 
 ...
