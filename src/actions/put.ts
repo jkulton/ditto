@@ -8,13 +8,13 @@ async function handler(context: RequestContext): Promise<Result> {
   return { data: body, status: STATUS.OK };
 }
 
-async function validator(context: RequestContext): Promise<Result> {
+async function validator(context: RequestContext): Promise<Result|null> {
   const { body, path, contentType } = context;
 
   // Validate Content-Type
   if (!contentType.startsWith(PUT_CONTENT_TYPE)) {
     return {
-      error: "Content-Type must be 'application/json' for PUT requests",
+      data: "Content-Type must be 'application/json' for PUT requests",
       status: STATUS.UNSUPPORTED_MEDIA_TYPE,
     };
   }
@@ -23,15 +23,15 @@ async function validator(context: RequestContext): Promise<Result> {
   try {
     await JSON.parse(body);
   } catch (e) {
-    return { error: 'Invalid JSON', status: STATUS.BAD_REQUEST };
+    return { data: 'Invalid JSON', status: STATUS.BAD_REQUEST };
   }
 
   // Validate on non-base path
   if (path === '') {
-    return { error: 'Cannot PUT origin', status: STATUS.BAD_REQUEST };
+    return { data: 'Cannot PUT origin', status: STATUS.BAD_REQUEST };
   }
 
-  return {};
+  return null;
 }
 
 export default { handler, validator };

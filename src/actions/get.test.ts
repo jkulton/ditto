@@ -7,6 +7,7 @@ tap.test('handler returns the routes list on the origin', async (t) => {
     body: '',
     path: '',
     url: 'https://example.com',
+    method: 'GET',
     store: {
       list: async () => {
         return { keys: [{ name: '/a' }, { name: '/a/b' }] };
@@ -36,6 +37,7 @@ tap.test('handler the data for a specific route', async (t) => {
     body: '',
     path: '/users/1',
     url: 'https://example.com',
+    method: 'GET',
     store: {
       list: () => {},
       delete: () => {},

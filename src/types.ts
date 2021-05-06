@@ -30,7 +30,6 @@ export interface Store {
 }
 
 export interface Result {
-  data?: string;
-  error?: string;
-  status?: number;
+  data: string|null;
+  status: number;
 }

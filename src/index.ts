@@ -10,7 +10,7 @@ addEventListener('fetch', (event) => {
 });
 
 async function handleRequest(request: Request): Promise<Response> {
-  const requestContext = await getRequestContext(request);
+  const requestContext = await getRequestContext(request, REPEAT_KV);
   const action = actions[requestContext.method];
 
   // If HTTP request method doesn't match a supported action return error
@@ -25,8 +25,8 @@ async function handleRequest(request: Request): Promise<Response> {
   if (action.validator) {
     const result = await action.validator(requestContext);
 
-    if (result.error) {
-      return new Response(result.error, {
+    if (result) {
+      return new Response(result.data, {
         headers: RESPONSE_HEADERS,
         status: result.status,
       });

@@ -7,6 +7,7 @@ tap.test('handler deletes for the provided path', async (t) => {
     body: '',
     path: '/special-path',
     url: '',
+    method: 'DELETE',
     store: {
       list: () => {},
       delete: async function (key) {
