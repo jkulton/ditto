@@ -1,4 +1,4 @@
-import { parseURLPath, handleError, getRequestContext } from './utility';
+import { handleError, getRequestContext } from './utility';
 import constants from './constants';
 import actions from './actions';
 
