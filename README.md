@@ -7,7 +7,7 @@
 
 Ditto is a live HTTP API deployed via a single CloudFlare Worker.
 
-Think of Ditto as a combination of an HTTP API and a key-value store. Whatever you `PUT` to a path will be returned when you `GET` that path.
+Think of Ditto as a combination of a REST API and a key-value store. Whatever you `PUT` to a route will be returned when you `GET` that same route.
 
 ## Setup
 
