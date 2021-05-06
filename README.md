@@ -5,7 +5,7 @@
 
 **[Website](https://ditto.pages.dev/)**
 
-A simple mock API for testing, prototyping, and general fun.
+A simple mock API for testing, prototyping, and general fun. Think of Ditto as a combination of an HTTP API and a key-value store. Whatever you `PUT` to a path will be returned when you `GET` that path.
 
 ## Setup
 
@@ -30,11 +30,6 @@ Publish your Worker and start using your mock API: `wrangler publish`
 ---
 
 ## Usage
-
-
-Think of Ditto as a combination of an HTTP API and a key-value store.
-
-Whatever you `PUT` to a path will be returned when you `GET` that path.
 
 ### Creating Data
 
