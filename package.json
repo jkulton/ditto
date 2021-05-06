@@ -1,5 +1,5 @@
 {
-  "name": "repeat",
+  "name": "ditto",
   "version": "1.0.0",
   "description": "Mock API CloudFlare Worker",
   "main": "index.js",
