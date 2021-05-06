@@ -125,7 +125,7 @@ GET https://ditto.USERNAME.workers.dev/
 
 ## Authentication
 
-If you'd like to enable authentication simply [set a secret using wrangler](https://developers.cloudflare.com/workers/cli-wrangler/commands#secret) with the name `DITTO_PSK`.
+If you'd like to enable authentication simply [set a secret using wrangler](https://developers.cloudflare.com/workers/cli-wrangler/commands#secret) with the name `DITTO_PSK`. Please ensure the secret value is sufficiently secure.
 
 ```
 wrangler secret put DITTO_PSK
