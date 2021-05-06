@@ -9,6 +9,12 @@ A flexible mock API deployed via a single CloudFlare Worker.
 
 Think of Ditto as a combination of a REST API and a key-value store. Whatever you `PUT` to a route will be returned when you `GET` that same route.
 
+## Potential Uses
+
+- **Prototyping** - build a simple app using Ditto as your datastore
+- **Decoupled Development** - build against an upcoming API before that API is ready for use by simualting it with Ditto
+- **Testing** - run integration tests against Ditto instead of real third-parties or fake HTTP servers
+
 ## Setup
 
 Ensure you have [`wrangler`](https://github.com/cloudflare/wrangler) installed and configured, then create a new Worker based on Ditto:
