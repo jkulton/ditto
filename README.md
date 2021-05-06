@@ -1,4 +1,9 @@
+<img alt="Ditto Logo" src="https://user-images.githubusercontent.com/6694167/117236689-35701f80-adf7-11eb-9c5c-c7c05c747d0f.png" width="200" />
+
+
 # Ditto
+
+**[Website](https://ditto.pages.dev/)**
 
 A simple mock API for testing, prototyping, and general fun.
 
