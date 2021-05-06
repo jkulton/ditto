@@ -1,4 +1,4 @@
-import { parseURLPath, handleError } from './utility';
+import { parseURLPath, handleError, getRequestContext } from './utility';
 import constants from './constants';
 import actions from './actions';
 
@@ -10,13 +10,10 @@ addEventListener('fetch', (event) => {
 });
 
 async function handleRequest(request: Request): Promise<Response> {
-  const path = parseURLPath(request.url);
-  const { method, url } = request;
-  const body = await request.text();
-  const action = actions[method];
-  const contentType = request.headers.get('Content-Type') || '';
-  const requestContext = { url, path, body, contentType, store: REPEAT_KV };
+  const requestContext = await getRequestContext(request, REPEAT_KV);
+  const action = actions[requestContext.method];
 
+  // If HTTP request method doesn't match a supported action return error
   if (!action) {
     return new Response(null, {
       headers: RESPONSE_HEADERS,
@@ -24,23 +21,21 @@ async function handleRequest(request: Request): Promise<Response> {
     });
   }
 
-  const { validator, handler } = action;
+  // If HTTP action requires validation we check before continuing
+  if (action.validator) {
+    const result = await action.validator(requestContext);
 
-  if (validator) {
-    const result = await validator(requestContext);
-
-    if (result.error) {
-      return new Response(result.error, {
+    if (result) {
+      return new Response(result.data, {
         headers: RESPONSE_HEADERS,
         status: result.status,
       });
     }
   }
 
-  const result = await handler(requestContext);
+  // Get result of action
+  const result = await action.handler(requestContext);
 
-  return new Response(result.data, {
-    headers: RESPONSE_HEADERS,
-    status: result.status,
-  });
+  // Create response for client
+  return new Response(result.data, { headers: RESPONSE_HEADERS, status: result.status });
 }

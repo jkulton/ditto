@@ -10,6 +10,7 @@ tap.test('handler puts data in store and returns to user', async (t) => {
     contentType: '',
     path: '/hero',
     url: 'https://example.com/hero',
+    method: 'PUT',
     store: {
       list: () => {},
       delete: () => {},
@@ -34,6 +35,7 @@ tap.test('validator cathces bad Content-Type', async (t) => {
     contentType: 'asdf',
     path: '/hero',
     url: 'https://example.com/hero',
+    method: 'PUT',
     store: {
       list: () => {},
       delete: () => {},
@@ -44,7 +46,7 @@ tap.test('validator cathces bad Content-Type', async (t) => {
 
   const expected = STATUS.UNSUPPORTED_MEDIA_TYPE;
   const result = await putAction.validator(requestContext);
-  const got = result.status;
+  const got = result?.status;
 
   t.match(expected, got);
   t.end();
@@ -56,6 +58,7 @@ tap.test('validator cathces invalid JSON', async (t) => {
     contentType: 'application/json',
     path: '/hero',
     url: 'https://example.com/hero',
+    method: 'PUT',
     store: {
       list: () => {},
       delete: () => {},
@@ -66,7 +69,7 @@ tap.test('validator cathces invalid JSON', async (t) => {
 
   const expected = STATUS.BAD_REQUEST;
   const result = await putAction.validator(requestContext);
-  const got = result.status;
+  const got = result?.status;
 
   t.match(expected, got);
   t.end();
@@ -78,6 +81,7 @@ tap.test('validator cathces PUT attempts on base path', async (t) => {
     contentType: 'application/json',
     path: '',
     url: 'https://example.com',
+    method: 'PUT',
     store: {
       list: () => {},
       delete: () => {},
@@ -88,7 +92,7 @@ tap.test('validator cathces PUT attempts on base path', async (t) => {
 
   const expected = STATUS.BAD_REQUEST;
   const result = await putAction.validator(requestContext);
-  const got = result.status;
+  const got = result?.status;
 
   t.match(expected, got);
   t.end();
