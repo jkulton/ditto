@@ -29,9 +29,9 @@ Create a KV namespace for Ditto:
 wrangler kv:namespace create "DITTO_KV"
 ```
 
-The previous command will instruct you to append some content to `wrangler.toml`, be sure to do so.
+The previous command will instruct you to append some content to `wrangler.toml`.
 
-Publish your Worker and start using your mock API: `wrangler publish`
+Publish your Worker and start using it: `wrangler publish`
 
 ---
 
@@ -39,7 +39,7 @@ Publish your Worker and start using your mock API: `wrangler publish`
 
 ### Creating Data
 
-`PUT` request to Ditto on a non-origin path with some JSON data will store the data
+`PUT` requests to Ditto on a non-origin path with some JSON data will store the data
 
 ```http
 PUT https://ditto.USERNAME.workers.dev/users/1
@@ -68,7 +68,7 @@ GET https://ditto.USERNAME.workers.dev/users/1
 ```
 
 
-`GET` requests a path you haven't `PUT` will return a 404
+`GET` requests to a path you haven't `PUT` will return a 404
 
 ```http
 GET https://ditto.USERNAME.workers.dev/users/2
