@@ -3,7 +3,7 @@
 
 # Ditto
 
-A flexible mock API deployed via a single [CloudFlare Worker](https://workers.cloudflare.com/).
+A flexible mock API deployed via a single [Cloudflare Worker](https://workers.cloudflare.com/).
 
 Think of Ditto as a combination of a REST API and a key-value store. Whatever you `PUT` to a route will be returned when you `GET` that same route.
 
