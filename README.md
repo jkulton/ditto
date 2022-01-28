@@ -41,7 +41,7 @@ Publish your Worker and start using it: `wrangler publish`
 
 `PUT` requests to Ditto on a non-origin path with some JSON data will store the data
 
-```http
+```
 PUT https://ditto.USERNAME.workers.dev/users/1
 Content-Type: application/json
 
@@ -57,7 +57,7 @@ Content-Type: application/json
 
 `GET` requests to the same path will return the data stored
 
-```http
+```
 GET https://ditto.USERNAME.workers.dev/users/1
 
 {
@@ -70,7 +70,7 @@ GET https://ditto.USERNAME.workers.dev/users/1
 
 `GET` requests to a path you haven't `PUT` will return a 404
 
-```http
+```
 GET https://ditto.USERNAME.workers.dev/users/2
 
 404 Not Found
@@ -79,7 +79,7 @@ GET https://ditto.USERNAME.workers.dev/users/2
 
 `GET` requests to the origin URL return a JSON array of all defined routes
 
-```http
+```
 GET https://ditto.USERNAME.workers.dev/
 
 [
@@ -94,7 +94,7 @@ GET https://ditto.USERNAME.workers.dev/
 
 `PUT` requests to an existing path update that resource
 
-```http
+```
 PUT https://ditto.USERNAME.workers.dev/users/1
 Content-Type: application/json
 
@@ -109,13 +109,13 @@ Content-Type: application/json
 
 `DELETE` requests to an existing path will remove that resource
 
-```http
+```
 DELETE https://ditto.USERNAME.workers.dev/users/1
 ```
 
 `DELETE` requests to the origin URL will **remove all resources**
 
-```http
+```
 DELETE https://ditto.USERNAME.workers.dev/
 
 ...
